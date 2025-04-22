@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="la">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canon 1254 §2 - Analyse interactive</title>
+    <style>
+        body { font-family: 'Georgia', serif; padding: 1em; line-height: 1.6; }
+        .word { position: relative; cursor: pointer; padding: 0 2px; border-radius: 4px; }
+        .yellow { background-color: #fff9c4; }
+        .green { background-color: #c8e6c9; }
+        .blue { background-color: #bbdefb; }
+        .orange { background-color: #ffe0b2; }
+        .red { background-color: #ef9a9a; }
+        .tooltip {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: #333; color: white;
+            text-align: center;
+            padding: 0.8em;
+            font-size: 1em;
+            display: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <h1>Canon 1254 §2</h1>
+    <p>
+        <span class="word yellow" data-tooltip="Nominatif pluriel – Sujet – les fins">Fines</span>
+        <span class="word" data-tooltip="Adverbe – cependant">vero</span>
+        <span class="word yellow" data-tooltip="Nominatif pluriel – Attribut du sujet – propres">proprii</span>
+        <span class="word" data-tooltip="Adverbe – principalement">praecipue</span>
+        <span class="word" data-tooltip="3e personne pluriel – verbe être – sont">sunt</span>:
+        <span class="word yellow" data-tooltip="Nominatif – Sujet du groupe – le culte">cultus</span>
+        <span class="word yellow" data-tooltip="Nominatif – Épithète – divin">divinus</span>
+        <span class="word yellow" data-tooltip="Nominatif – Gérondif passif – à organiser">ordinandus</span>,
+        <span class="word yellow" data-tooltip="Nominatif – Épithète – honnête">honesta</span>
+        <span class="word yellow" data-tooltip="Nominatif – Nom – le soutien">sustentatio</span>
+        <span class="word blue" data-tooltip="Génitif – Complément – du clergé">cleri</span>
+        <span class="word blue" data-tooltip="Génitif – Complément – et des autres">aliorumque</span>
+        <span class="word blue" data-tooltip="Génitif – Complément – ministres">ministrorum</span>
+        <span class="word yellow" data-tooltip="Nominatif – Gérondif passif – à assurer">procuranda</span>,
+        <span class="word yellow" data-tooltip="Nominatif – Nom neutre pluriel – les œuvres">opera</span>
+        <span class="word blue" data-tooltip="Génitif – Complément – de l'apostolat">sacri apostolatus</span>
+        <span class="word blue" data-tooltip="Génitif – Complément – et de la charité">et caritatis</span>,
+        <span class="word" data-tooltip="Adverbe – surtout">praesertim</span>
+        <span class="word green" data-tooltip="Accusatif – Complément – envers">erga</span>
+        <span class="word green" data-tooltip="Accusatif – les pauvres">egenos</span>,
+        <span class="word yellow" data-tooltip="Nominatif – Gérondif passif – à exercer">exercenda</span>.
+    </p>
+    <div class="tooltip" id="tooltip"></div>
+    <script>
+        const words = document.querySelectorAll('.word');
+        const tooltip = document.getElementById('tooltip');
+
+        words.forEach(word => {
+            word.addEventListener('click', () => {
+                tooltip.textContent = word.getAttribute('data-tooltip');
+                tooltip.style.display = 'block';
+            });
+        });
+
+        document.body.addEventListener('click', e => {
+            if (!e.target.classList.contains('word')) {
+                tooltip.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
